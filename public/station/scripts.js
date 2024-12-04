@@ -16,7 +16,7 @@ const nextBtn = document.getElementById("next-btn");
 
 let currentIndex = 0;
 
-// 데스크탑 콘텐츠 생성
+
 videoData.forEach(video => {
     const videoWrapper = document.createElement("div");
     videoWrapper.className = "video-wrapper";
@@ -35,18 +35,16 @@ videoData.forEach(video => {
 
     videoContainer.appendChild(videoWrapper);
 
-    // 슬라이더 콘텐츠 생성
     const sliderItem = videoWrapper.cloneNode(true);
     sliderItem.classList.add("slider-item");
     videoSlider.appendChild(sliderItem);
 });
 
-// 슬라이더 업데이트
+
 const updateSlider = () => {
     videoSlider.style.transform = `translateX(-${currentIndex * 100}%)`;
 };
 
-// 이전 버튼 클릭
 prevBtn.addEventListener("click", () => {
     if (currentIndex > 0) {
         currentIndex--;
@@ -54,7 +52,7 @@ prevBtn.addEventListener("click", () => {
     }
 });
 
-// 다음 버튼 클릭
+
 nextBtn.addEventListener("click", () => {
     if (currentIndex < videoData.length - 1) {
         currentIndex++;
