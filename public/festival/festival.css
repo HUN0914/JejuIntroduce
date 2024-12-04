@@ -1,0 +1,245 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #FFE0B2;
+    line-height: 1.6;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+    transition: all 0.3s ease; /* 추가 */
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #FF7E3D;
+    margin: 0;
+}
+
+header a {
+    color: #FF5722;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 5px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #FF3D00;
+}
+
+.banner-section {
+    padding: 120px 20px 20px; 
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto; 
+    border-radius: 10px; /* 추가 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 추가 */
+}
+
+.banner-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px; /* 추가 */
+}
+
+.banner-content img {
+    width: 300px; 
+    height: auto;
+    border-radius: 10px; 
+    object-fit: contain; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.text-content {
+    flex: 1; 
+}
+
+.text-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.text-content p:last-child {
+    margin-bottom: 0; 
+}
+
+.festival-list {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px; 
+    justify-content: center; 
+    padding: 10px;
+}
+
+.festival-card {
+    display: flex;
+    flex-direction: row; 
+    align-items: stretch; 
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%; 
+    max-width: 900px; 
+    margin: 20px auto;
+    transition: transform 0.3s ease;
+}
+
+.festival-card:hover {
+    transform: scale(1.03); 
+}
+
+.festival-card img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    max-height: 333px; 
+    object-fit: contain; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+.festival-content {
+    width: 60%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.festival-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.festival-content p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.festival-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.festival-content ul li {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ff8c00;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff6f00;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px; 
+    }
+
+    header {
+        padding: 10px 0; 
+    }
+
+    header h1 {
+        font-size: 1.3rem; 
+    }
+
+    header a {
+        font-size: 0.8rem; 
+        margin-top: 3px; 
+    }
+
+    .banner-section {
+        padding: 60px 10px 10px; 
+        max-width: 100%; 
+        box-shadow: none; 
+        border-radius: 0; 
+    }
+
+    .banner-content {
+        flex-direction: column; 
+        gap: 15px; 
+    }
+
+    .banner-content img {
+        width: 100%; 
+        border-radius: 5px; 
+        box-shadow: none;
+    }
+
+    .text-content {
+        text-align: center;
+    }
+
+    .festival-list {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .festival-card {
+        flex-direction: column; 
+        width: 100%; 
+        max-width: 100%;
+        margin: 15px 0; 
+        box-shadow: none;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .festival-card img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .festival-content {
+        text-align: center; 
+        padding-left: 130px; 
+    }
+
+    .festival-content h2 {
+        font-size: 1.2rem; 
+        margin-bottom: 8px; 
+    }
+
+    .festival-content p {
+        font-size: 0.9rem; 
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        font-size: 0.8rem; 
+        padding: 10px 20px; 
+        width: 50%; 
+    }
+}
