@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const blogList = document.getElementById('blog-list');
-    const leftButton = document.getElementById('left-btn'); // 왼쪽 버튼
-    const rightButton = document.getElementById('right-btn'); // 오른쪽 버튼
+    const leftButton = document.getElementById('left-btn'); 
+    const rightButton = document.getElementById('right-btn'); 
     let currentPage = 1; 
     let isLoading = false; 
 
@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // 스크롤 이벤트로 데이터 로드
     window.addEventListener('scroll', () => {
         const scrollHeight = document.documentElement.scrollHeight; 
         const scrollTop = document.documentElement.scrollTop || window.scrollY; 
@@ -61,21 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 버튼 클릭 이벤트로 가로 스크롤 구현
     leftButton.addEventListener('click', () => {
         blogList.scrollBy({
-            left: -300, // 왼쪽으로 300px 이동
-            behavior: 'smooth', // 부드러운 스크롤
+            left: -300, 
+            behavior: 'smooth', 
         });
     });
 
     rightButton.addEventListener('click', () => {
         blogList.scrollBy({
-            left: 300, // 오른쪽으로 300px 이동
-            behavior: 'smooth', // 부드러운 스크롤
+            left: 300, 
+            behavior: 'smooth', 
         });
     });
 
-    // 초기 데이터 로드
     loadBlogs();
 });

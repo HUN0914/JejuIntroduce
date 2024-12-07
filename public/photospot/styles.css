@@ -1,0 +1,261 @@
+:root {
+    --primary: #FE6B35;
+    --secondary: #FFD5C2;
+    --accent: #FF8B5E;
+    --background: #FFE0B2;  
+    --text: #2D2D2D;
+    --shadow: 0 8px 30px rgba(0,0,0,0.12);
+    --gradient: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.2rem 2rem;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-home {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.7rem 1.2rem;
+    border-radius: 50px;
+    background: var(--secondary);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-home:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 2rem 50px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.season-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.season-tab {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.season-tab.active {
+    background: var(--gradient);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.season-tab:hover {
+    transform: translateY(-2px);
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.photo-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.05);
+}
+
+.photo-info {
+    padding: 1.8rem;
+}
+
+.photo-info h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.photo-info p {
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.location-info {
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #f8f8f8;
+    border-radius: 50px;
+    width: fit-content;
+}
+
+/* 태블릿 반응형 */
+@media (max-width: 1024px) {
+    .container {
+        padding: 100px 1.5rem 40px;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .photo-card img {
+        height: 250px;
+    }
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .nav {
+        padding: 1rem;
+    }
+
+    .nav-brand {
+        font-size: 1.2rem;
+    }
+
+    .page-header {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .season-tabs {
+        gap: 0.5rem;
+    }
+
+    .season-tab {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .photo-card img {
+        height: 200px;
+    }
+
+    .photo-info {
+        padding: 1.2rem;
+    }
+
+    .photo-info h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* 작은 모바일 화면 */
+@media (max-width: 480px) {
+    .container {
+        padding: 80px 1rem 30px;
+    }
+
+    .nav-brand span {
+        display: none;
+    }
+
+    .season-tab {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}

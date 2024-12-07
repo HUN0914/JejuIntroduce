@@ -8,7 +8,7 @@ const client_secret = 'MOPqpAcGYr';
 
 app.use(express.static('public'));
 
-// 블로그 검색 API
+
 app.get('/api/blogs', async (req, res) => {
     const query = req.query.query || '제주도 맛집';
     const start = req.query.start || 1;

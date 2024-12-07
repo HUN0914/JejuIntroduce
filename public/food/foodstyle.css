@@ -1,134 +1,201 @@
+:root {
+    --primary: #FF7E3D;
+    --secondary: #FFE0B2;
+    --accent: #FF5722;
+    background-color: #FFE0B2; 
+    --card-bg: #FFFFFF;
+    --text: #2D2D2D;
+    --shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    margin: 0px;
+    margin: 0;
     padding: 0;
-    background-color: #FFE0B2;
-    color: #020202;
+    background-color: var(--background);
+    color: var(--text);
 }
 
 header {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 15px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow);
     z-index: 1000;
     text-align: center;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 header h1 {
     font-size: 2rem;
-    color: #FF7E3D;
-    margin: 0;
+    color: var(--primary);
+    margin: 0 0 5px 0;
     text-align: center;
+    font-weight: 700;
 }
 
 header a {
-    color: #FF5722;
+    color: var(--accent);
     text-decoration: none;
     font-size: 1rem;
-    margin-left: 0px;
-    transition: color 0.3s ease;
-    text-align: center;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: var(--secondary);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+header a:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
 }
 
 main {
-    padding: 100px;
+    padding: 100px 20px 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 #blog-list {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
     padding-bottom: 20px;
 }
 
 .blog-card {
-    background: #f7e9e9;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 25px 30px;
     text-align: left;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
     width: 100%;
-    max-width: 1500px;
-    margin: 10px auto;
+    max-width: 900px;
+    margin: 5px auto;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .blog-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.blog-card h3 {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.blog-card p {
+    color: var(--text);
+    opacity: 0.8;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 #loading-indicator {
     margin: 20px auto;
     width: 40px;
     height: 40px;
-    border: 4px solid #ccc;
-    border-top-color: #FF5722;
+    border: 3px solid var(--secondary);
+    border-top-color: var(--primary);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
 
-/* 버튼 스타일: 첫 번째 코드에서 가져온 디자인 */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 .slider-btn {
-    position: absolute;
+    position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
-    color: white; /* 버튼 텍스트 색상 */
-    border: none; /* 기본 테두리 제거 */
-    padding: 10px; /* 버튼 내부 여백 */
-    font-size: 2rem; /* 텍스트 크기 */
-    cursor: pointer; /* 마우스 커서 변경 */
-    border-radius: 5px; /* 둥근 모서리 */
-    z-index: 1000; /* 버튼 우선 순위 */
-    appearance: none; /* 기본 스타일 제거 */
-    -webkit-appearance: none; /* 웹킷 브라우저 기본 스타일 제거 */
-    outline: none; /* 포커스 테두리 제거 */
-    box-shadow: none; /* 그림자 제거 */
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 1000;
     display: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .slider-btn:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: var(--accent);
+    transform: translateY(-50%) scale(1.1);
 }
 
 #left-btn {
-    left: 10px;
+    left: 20px;
 }
 
 #right-btn {
-    right: 10px;
+    right: 20px;
 }
 
-/* 모바일 뷰 설정 */
 @media screen and (max-width: 768px) {
     main {
-        padding: 60px;
+        padding: 80px 15px 30px 15px;
     }
 
     #blog-list {
         display: flex;
-        flex-direction: row; /* 가로로 정렬 */
-        overflow-x: auto; /* 가로 스크롤 활성화 */
-        scroll-snap-type: x mandatory; /* 스크롤 스냅 */
-        gap: 20px; /* 카드 간격 */
-        padding: 20px 0;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 20px 10px;
+        scroll-behavior: smooth;
     }
 
     .blog-card {
-        min-width: 300px; /* 카드의 최소 너비 설정 */
-        max-width: 90%; /* 카드 최대 크기 제한 */
-        flex: 0 0 auto; /* 고정 크기 */
-        scroll-snap-align: start; /* 카드별 스냅 위치 */
+        min-width: 300px;
+        max-width: 85%;
+        flex: 0 0 auto;
+        scroll-snap-align: center;
+        margin: 10px 0;
     }
 
     .slider-btn {
-        display: block; /* 모바일 뷰에서만 버튼 표시 */
+        display: block;
+        padding: 12px 16px;
+        font-size: 1.5rem;
     }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .blog-card h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* 스크롤바 스타일링 */
+#blog-list::-webkit-scrollbar {
+    height: 8px;
+}
+
+#blog-list::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.05);
+    border-radius: 4px;
+}
+
+#blog-list::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
 }

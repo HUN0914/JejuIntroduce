@@ -4,58 +4,60 @@ const videoData = [
     { link: "https://www.youtube.com/embed/jt8mcRpvyb8", title: "제주 숨겨진 명소" },
     { link: "https://www.youtube.com/embed/F0nFkt5l4Qg", title: "제주 액티비티" },
     { link: "https://www.youtube.com/embed/F7yWNtsz8Ao", title: "제주 야경 투어" },
-    { link: "https://www.youtube.com/embed/O4AKvKN2iQQ?start=3", title : "예랑예랑의 제주 여행 브이로그"},
-    { link: "https://www.youtube.com/embed/TZsLmw-Xp_s", title : "제주 2박 3일 브이로그"}
-
+    { link: "https://www.youtube.com/embed/O4AKvKN2iQQ?start=3", title: "예랑예랑의 제주 여행 브이로그" },
+    { link: "https://www.youtube.com/embed/TZsLmw-Xp_s", title: "제주 2박 3일 브이로그" }
 ];
 
-const videoContainer = document.getElementById("video-container");
-const videoSlider = document.getElementById("video-slider");
-const prevBtn = document.getElementById("prev-btn");
-const nextBtn = document.getElementById("next-btn");
+let currentSlide = 0;
 
-let currentIndex = 0;
-
-
-videoData.forEach(video => {
-    const videoWrapper = document.createElement("div");
-    videoWrapper.className = "video-wrapper";
-
-    const iframe = document.createElement("iframe");
-    iframe.src = video.link;
-    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    iframe.allowFullscreen = true;
-
-    const description = document.createElement("div");
-    description.className = "video-description";
-    description.textContent = video.title;
-
-    videoWrapper.appendChild(iframe);
-    videoWrapper.appendChild(description);
-
-    videoContainer.appendChild(videoWrapper);
-
-    const sliderItem = videoWrapper.cloneNode(true);
-    sliderItem.classList.add("slider-item");
-    videoSlider.appendChild(sliderItem);
-});
+function createVideoCard(video) {
+    return `
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe 
+                    src="${video.link}" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">${video.title}</h3>
+            </div>
+        </div>
+    `;
+}
 
 
-const updateSlider = () => {
-    videoSlider.style.transform = `translateX(-${currentIndex * 100}%)`;
-};
+const gridContainer = document.getElementById('video-grid');
+gridContainer.innerHTML = videoData.map(createVideoCard).join('');
 
-prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-        currentIndex--;
+
+const sliderContainer = document.getElementById('slider');
+sliderContainer.innerHTML = videoData.map(video => 
+    `<div class="slider-card">${createVideoCard(video)}</div>`
+).join('');
+
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+function updateSlider() {
+    sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    prevBtn.disabled = currentSlide === 0;
+    nextBtn.disabled = currentSlide === videoData.length - 1;
+}
+
+prevBtn.addEventListener('click', () => {
+    if (currentSlide > 0) {
+        currentSlide--;
         updateSlider();
     }
 });
 
-
-nextBtn.addEventListener("click", () => {
-    if (currentIndex < videoData.length - 1) {
-        currentIndex++;
+nextBtn.addEventListener('click', () => {
+    if (currentSlide < videoData.length - 1) {
+        currentSlide++;
         updateSlider();
     }
 });
+
+updateSlider();
